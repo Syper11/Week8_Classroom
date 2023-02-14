@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import Nav from './Nav'
-import Home from './Home'
-import News from './News'
+import Nav from './Nav';
+import Home from './Home';
+import News from './News';
+import{ Routes, Route, BrowserRouter } from 'react-router-dom';
 
 export default class App extends Component {
   constructor(){
@@ -13,10 +14,14 @@ export default class App extends Component {
 
   render() {
     return (
+      <BrowserRouter>
       <div>
         <Nav />
-        {/* <News></News> */}
-        <Home testVar = {this.state.test}/>
+        <Routes>
+          <Route path='/' element={<Home testVar = {this.state.test} x='5000'/>}/>
+          <Route path='/' element={<News />}/>
+          
+        </Routes>
         {/* <Content>
           <Feed>
             <Post>
@@ -27,6 +32,7 @@ export default class App extends Component {
 
 
       </div>
+      </BrowserRouter>
     )
   }
 };
